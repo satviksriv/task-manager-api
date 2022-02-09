@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//* Task model
 const Task = mongoose.model("Task", {
     description: {
         type: String,
