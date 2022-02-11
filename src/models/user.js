@@ -50,6 +50,7 @@ const userSchema = mongoose.Schema({
     }]
 });
 
+//* Hiding password and tokens array
 userSchema.methods.toJSON = function () {
     const user = this;
     const userObject = user.toObject();
@@ -60,6 +61,7 @@ userSchema.methods.toJSON = function () {
     return userObject;
 }
 
+//* Generating authentication token
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
     const token = jwt.sign({ _id: user._id.toString() }, "thisismynewcourse");
@@ -70,6 +72,7 @@ userSchema.methods.generateAuthToken = async function () {
     return token;
 }
 
+//* Finding user by credentials 
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });
 
