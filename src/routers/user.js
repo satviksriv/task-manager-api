@@ -27,28 +27,35 @@ router.post("/users/login", async (req, res) => {
     }
 })
 
-//* Fetch multiple users
-router.get("/users/me", auth, async (req, res) => {
-    res.send(req.user);
-})
-
-//* Fetch individual user by id
-router.get("/users/:id", async (req, res) => {
-    const _id = req.params.id;
-
+//* Logging out a user
+router.post("/users/logout", auth, async (req, res) => {
     try {
-        //! If _id is less than 12 characters then mongoose will show an error. This is a bug and needs to be fixed
-        const user = await User.findById(_id);
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token;
+        })
+        await req.user.save();
 
-        if (!user) {
-            return res.status(404).send();
-        }
-
-        res.send(user);
+        res.send();
     } catch (e) {
         res.status(500).send();
     }
+})
 
+//* Logging out user from all sessions
+router.post("/users/logoutALL", auth, async (req, res) => {
+    try {
+        req.user.tokens = [];
+
+        await req.user.save();
+        res.send();
+    } catch (e) {
+        res.status(500).send();
+    }
+})
+
+//* Fetch user profile
+router.get("/users/me", auth, async (req, res) => {
+    res.send(req.user);
 })
 
 //* Update an existing user
@@ -78,7 +85,7 @@ router.patch("/users/:id", async (req, res) => {
 })
 
 //* Delete a user
-router.delete("/users/:id", async (req, res) => {
+router.delete("/users/:id", auth, async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
 
