@@ -5,7 +5,6 @@ const sibApiKey = process.env.SIB_API_KEY;
 SibApiV3Sdk.ApiClient.instance.authentications["api-key"].apiKey = sibApiKey;
 
 const sendWelcomeEmail = (email, name) => {
-    console.log(process.env.SIB_API_KEY);
     new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail({
         subject: "Thanks for joining in!",
         sender: { "email": "rishabhsatvik2013@gmail.com", "name": "Satvik Srivastava" },
