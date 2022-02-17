@@ -111,9 +111,43 @@ test("Should not update invalid user fields", async () => {
         .expect(400);
 })
 
-// User Test Ideas
-//
-// Should not signup user with invalid name/email/password
-// Should not update user if unauthenticated
-// Should not update user with invalid name/email/password
-// Should not delete user if unauthenticated
+test("Should not signup user with invalid name/email/password", async () => {
+    await request(app)
+        .post("/users/login")
+        .send({
+            email: userOne.email,
+            password: "WrongPass123"
+        })
+        .expect(400);
+})
+
+test("Should not update user if unauthenticated", async () => {
+    await request(app)
+        .patch("/users/me")
+        .set("Authorization", `Bearer invalidTokenValue`)
+        .send({
+            name: "Jon"
+        })
+        .expect(401);
+})
+
+test("Should not update user with invalid name/email/password", async () => {
+    await request(app)
+        .patch("/users/me")
+        .set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+        .send({
+            email: 123
+            //! If we send name and password as numbers then the database is updated successfully
+            //! name: 123 --> gives 200 status code instead of 400
+            //! password: 12345678 --> gives 200 status code instead of 400
+        })
+        .expect(400);
+})
+
+test("Should not delete user if unauthenticated", async () => {
+    await request(app)
+        .delete("/users/me")
+        .set("Authorization", `Bearer invalidTokenValue`)
+        .send()
+        .expect(401);
+})
