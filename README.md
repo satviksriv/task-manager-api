@@ -168,7 +168,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Update a task of a user (only if authorized)
 
 ```http
-  GET /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
+  PATCH /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
 ```
 
 | Parameter     | Type      | Description           |
