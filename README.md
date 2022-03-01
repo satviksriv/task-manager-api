@@ -22,20 +22,20 @@ This API is built using Node.js, Express.js, MongoDB and Mongoose.
 This API has the following features:
 
 - **[Create a new user](#create-a-new-user):** Create a new user with the given name, email and password using the POST method.
-- **[Login an existing user](#login-an-existing-user):** Login a user with the given email and password using the POST method.
-- **[Logout a user](#logout-a-user):** Logout a user using the POST method.
-- **[Logout user from all locations](#logout-user-from-all-logged-in-locations):** Logout a user from all locations it has logged in using the POST method.
-- **[Create a new task for a user](#create-a-new-task-for-a-user-only-if-authorized):** Create a new task for an existing user using the POST method.
-- **[Upload an avatar](#upload-an-avatar-only-if-authorized):** Upload an avatar for an user using the POST method.
+- **[Login a existing user](#login-a-existing-user):** Login a user with the given email and password using the POST method.
+- **[Logout a user](#logout-a-user-only-if-authorized):** Logout a user using the POST method.
+- **[Logout user from all locations](#logout-user-from-all-logged-in-locations-only-if-authorized):** Logout a user from all locations it has logged in using the POST method.
+- **[Create a new task for a user](#create-a-new-task-for-a-user-only-if-authorized):** Create a new task for a existing user using the POST method.
+- **[Upload an avatar](#upload-an-avatar-only-if-authorized):** Upload an avatar for a user using the POST method.
 - **[Read profile](#read-profile-only-if-authorized):** Read the profile of the logged in user by using the GET method.
 - **[Read user (Admin only)](#read-user-admin-only-only-if-authorized):** Read the profile of a particular user by its id using the GET method.
-- **[Read all tasks of an user](#read-all-tasks-of-an-user-only-if-authorized):** Read all tasks of an existing user using the GET method.
-- **[Read a particular task of an user](#read-a-particular-task-of-an-user-only-if-authorized):** Read a particular task of an existing user using the GET method.
-- **[Update an user](#update-an-user-only-if-authorized):** Update an user using the PATCH method.
-- **[Update a task of an user](#update-a-task-of-an-user-only-if-authorized):** Update an existing task by using the PATCH method.
-- **[Delete an user](#delete-an-user-only-if-authorized):** Delete an user by its id using the DELETE method.
-- **[Delete a task of an user](#delete-a-task-of-an-user-only-if-authorized):** Delete an existing task by using the DELETE method.
-- **[Delete avatar](#delete-avatar-only-if-authorized):** Delete an avatar for an user using the DELETE method.
+- **[Read all tasks of a user](#read-all-tasks-of-a-user-only-if-authorized):** Read all tasks of a existing user using the GET method.
+- **[Read a particular task of a user](#read-a-particular-task-of-a-user-only-if-authorized):** Read a particular task of a existing user using the GET method.
+- **[Update a user](#update-a-user-only-if-authorized):** Update a user using the PATCH method.
+- **[Update a task of a user](#update-a-task-of-a-user-only-if-authorized):** Update a existing task by using the PATCH method.
+- **[Delete a user](#delete-a-user-only-if-authorized):** Delete a user by its id using the DELETE method.
+- **[Delete a task of a user](#delete-a-task-of-a-user-only-if-authorized):** Delete an existing task by using the DELETE method.
+- **[Delete avatar](#delete-avatar-only-if-authorized):** Delete avatar for a user using the DELETE method.
 
 It also contains the authentication middleware that is used to authenticate the user which handles the error if the user is not authenticated.
 
@@ -72,7 +72,7 @@ I have also integrate the API to send the correct source codes according to the 
 | `email`    | `string` | **Required**. User's email    |
 | `password` | `string` | **Required**. User's password |
 
-#### Login an existing user
+#### Login a existing user
 
 ```http
   POST /https://satviksriv-task-manager.herokuapp.com/users/login
@@ -132,7 +132,7 @@ I have also integrate the API to send the correct source codes according to the 
 | :-------- | :------- | :---------------------- |
 | `_id`     | `string` | **Required**. User's id |
 
-#### Read all tasks of an user (only if authorized)
+#### Read all tasks of a user (only if authorized)
 
 ```http
   GET /https://satviksriv-task-manager.herokuapp.com/tasks/?sortBy=*sorting-conditons*
@@ -142,7 +142,7 @@ I have also integrate the API to send the correct source codes according to the 
 | :-------- | :------- | :---------------------------------------------- |
 | `sortBy`  | `string` | **Default: createdAt_DESC**. Sorting conditions |
 
-#### Read a particular task of an user (only if authorized)
+#### Read a particular task of a user (only if authorized)
 
 ```http
   GET /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
@@ -152,7 +152,7 @@ I have also integrate the API to send the correct source codes according to the 
 | :-------- | :------- | :-------------------- |
 | `_id`     | `string` | **Required**. Task id |
 
-#### Update an user (only if authorized)
+#### Update a user (only if authorized)
 
 ```http
   PATCH /https://satviksriv-task-manager.herokuapp.com/users/me
@@ -165,7 +165,7 @@ I have also integrate the API to send the correct source codes according to the 
 | `password` | `string` | New password |
 | `age`      | `number` | New email    |
 
-#### Update a task of an user (only if authorized)
+#### Update a task of a user (only if authorized)
 
 ```http
   GET /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
@@ -177,13 +177,13 @@ I have also integrate the API to send the correct source codes according to the 
 | `description` | `string`  | New description       |
 | `completed`   | `boolean` | New value             |
 
-#### Delete an user (only if authorized)
+#### Delete a user (only if authorized)
 
 ```http
   DELETE /https://satviksriv-task-manager.herokuapp.com/users/me
 ```
 
-#### Delete a task of an user (only if authorized)
+#### Delete a task of a user (only if authorized)
 
 ```http
   DELETE /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
