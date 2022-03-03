@@ -43,7 +43,7 @@ I have also included tests file which contains the test cases for both the users
 
 I have also integrated email sending functionality which sends an email whenever a new user is signed up or a user is deleted. I have achieved this by using the [SendInBlue API](https://www.sendinblue.com/).
 
-I have also integrate the API to send the correct source codes according to the output of the operations.
+I have also integrate the API to send the correct status codes according to the output of the operations.
 
 ## Concepts Used
 
