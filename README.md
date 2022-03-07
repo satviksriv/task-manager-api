@@ -63,7 +63,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Create a new user
 
 ```http
-  POST /https://satviksriv-task-manager.herokuapp.com/users
+  POST https://satviksriv-task-manager.herokuapp.com/users
 ```
 
 | Parameter  | Type     | Description                   |
@@ -75,7 +75,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Login a existing user
 
 ```http
-  POST /https://satviksriv-task-manager.herokuapp.com/users/login
+  POST https://satviksriv-task-manager.herokuapp.com/users/login
 ```
 
 | Parameter  | Type     | Description                   |
@@ -86,19 +86,19 @@ I have also integrate the API to send the correct source codes according to the 
 #### Logout a user (only if authorized)
 
 ```http
-  POST /https://satviksriv-task-manager.herokuapp.com/users/logout
+  POST https://satviksriv-task-manager.herokuapp.com/users/logout
 ```
 
 #### Logout user from all logged-in locations (only if authorized)
 
 ```http
-  POST /https://satviksriv-task-manager.herokuapp.com/users/logoutALL
+  POST https://satviksriv-task-manager.herokuapp.com/users/logoutALL
 ```
 
 #### Create a new task for a user (only if authorized)
 
 ```http
-  POST /https://satviksriv-task-manager.herokuapp.com/tasks
+  POST https://satviksriv-task-manager.herokuapp.com/tasks
 ```
 
 | Parameter     | Type      | Description                         |
@@ -109,7 +109,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Upload an avatar (only if authorized)
 
 ```http
-  POST /https://satviksriv-task-manager.herokuapp.com/users/avatar
+  POST https://satviksriv-task-manager.herokuapp.com/users/avatar
 ```
 
 | Parameter | Type         | Description                      |
@@ -119,13 +119,13 @@ I have also integrate the API to send the correct source codes according to the 
 #### Read profile (only if authorized)
 
 ```http
-  GET /https://satviksriv-task-manager.herokuapp.com/users/me
+  GET https://satviksriv-task-manager.herokuapp.com/users/me
 ```
 
 #### Read user (Admin only) (only if authorized)
 
 ```http
-  GET /https://satviksriv-task-manager.herokuapp.com/users/${_id}
+  GET https://satviksriv-task-manager.herokuapp.com/users/${_id}
 ```
 
 | Parameter | Type     | Description             |
@@ -135,7 +135,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Read all tasks of a user (only if authorized)
 
 ```http
-  GET /https://satviksriv-task-manager.herokuapp.com/tasks/?sortBy=*sorting-conditons*
+  GET https://satviksriv-task-manager.herokuapp.com/tasks/?sortBy=*sorting-conditons*
 ```
 
 | Parameter | Type     | Description                                     |
@@ -145,7 +145,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Read a particular task of a user (only if authorized)
 
 ```http
-  GET /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
+  GET https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
 ```
 
 | Parameter | Type     | Description           |
@@ -155,7 +155,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Update a user (only if authorized)
 
 ```http
-  PATCH /https://satviksriv-task-manager.herokuapp.com/users/me
+  PATCH https://satviksriv-task-manager.herokuapp.com/users/me
 ```
 
 | Parameter  | Type     | Description  |
@@ -168,7 +168,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Update a task of a user (only if authorized)
 
 ```http
-  PATCH /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
+  PATCH https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
 ```
 
 | Parameter     | Type      | Description           |
@@ -180,13 +180,13 @@ I have also integrate the API to send the correct source codes according to the 
 #### Delete a user (only if authorized)
 
 ```http
-  DELETE /https://satviksriv-task-manager.herokuapp.com/users/me
+  DELETE https://satviksriv-task-manager.herokuapp.com/users/me
 ```
 
 #### Delete a task of a user (only if authorized)
 
 ```http
-  DELETE /https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
+  DELETE https://satviksriv-task-manager.herokuapp.com/tasks/${_id}
 ```
 
 | Parameter | Type     | Description           |
@@ -196,7 +196,7 @@ I have also integrate the API to send the correct source codes according to the 
 #### Delete avatar (only if authorized)
 
 ```http
-  DELETE /https://satviksriv-task-manager.herokuapp.com/users/me/avatar
+  DELETE https://satviksriv-task-manager.herokuapp.com/users/me/avatar
 ```
 
 ## Run Locally
