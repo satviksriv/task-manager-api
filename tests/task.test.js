@@ -98,12 +98,55 @@ test("Should not update other users task", async () => {
         .expect(404);
 });
 
+test("Should fetch user task by id", async () => {
+    const response = await request(app)
+        .get(`/tasks/${taskOne._id}`)
+        .set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+        .send()
+        .expect(200);
+    const task = await Task.findById(response.body._id);
+    expect(task).not.toBeNull();
+});
+
+test("Should not fetch user task by id if unauthenticated", async () => {
+    const response = await request(app)
+        .get(`/tasks/${taskOne._id}`)
+        .set("Authorization", `Bearer ${userTwo.tokens[0].token}`)
+        .send()
+        .expect(404);
+    const task = await Task.findById(response.body._id);
+    expect(task).toBeNull();
+});
+
+test("Should not fetch other users task by id", async () => {
+    const response = await request(app)
+        .get(`/tasks/${taskOne._id}`)
+        .set("Authorization", `Bearer ${userTwo.tokens[0].token}`)
+        .send()
+        .expect(404);
+    const tasks = await Task.findById(response.body._id);
+    expect(tasks).toBeNull();
+});
+
+test("Should fetch only completed tasks", async () => {
+    const response = await request(app)
+        .get("/tasks?completed=true")
+        .set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+        .send()
+        .expect(200);
+    expect(response.body.length).toEqual(1);
+});
+
+test("Should fetch only incomplete tasks", async () => {
+    const response = await request(app)
+        .get("/tasks?completed=false")
+        .set("Authorization", `Bearer ${userOne.tokens[0].token}`)
+        .send()
+        .expect(200);
+    expect(response.body.length).toEqual(1);
+});
+
 // Task Test Ideas
 //
-// Should fetch user task by id
-// Should not fetch user task by id if unauthenticated
-// Should not fetch other users task by id
-// Should fetch only completed tasks
-// Should fetch only incomplete tasks
 // Should sort tasks by description/completed/createdAt/updatedAt
 // Should fetch page of tasks
